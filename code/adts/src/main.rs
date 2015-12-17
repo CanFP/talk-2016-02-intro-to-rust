@@ -1,29 +1,24 @@
-enum Command {
-    Download(String, String),
-    Run(String),
-    Sleep(i32),
-    ChangeSetting(String, String),
-    DumpSettings,
-}
+#![feature(box_syntax, box_patterns)]
+//https://doc.rust-lang.org/book/box-syntax-and-patterns.html
 
-enum Direction {
-    N(i32),
-    E(i32),
-    S(i32),
-    W(i32),
-    NE(i32, i32),
-    SE(i32, i32),
-    SW(i32, i32),
-    NW(i32, i32),
+enum Tree {
+    Empty,
+    Leaf(i32),
+    Node(Box<Tree>, Box<Tree>)
 }
 
 fn main() {
-    let walk_left = Direction::W(1);
-    let run_up    = Direction::N(2);
-    let x,y = 0;
+    let one   = Tree::Leaf(1);
+    let two   = Tree::Leaf(2);
+    let three = Tree::Leaf(3);
+    //let n     = Tree::Node(Box::new(two), Box::new(three));
+    let n     = Tree::Node(box two, box three);
+    let t     = Tree::Node(box one, box n);
 
-    let movement = walk_left;
-
+    //dfs(t, 2);
+}
+/*
+fn dfs(Tree: t, i32: n) -> Tree {
     match movement {
         Direction::N(n) => new_pos();
         Command::Download(web, path) => println!("Going to download {}", web),
@@ -31,3 +26,4 @@ fn main() {
         _                            => println!("Going to do .. something else")
     }
 }
+*/
