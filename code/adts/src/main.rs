@@ -1,29 +1,27 @@
 #![feature(box_syntax, box_patterns)]
-//https://doc.rust-lang.org/book/box-syntax-and-patterns.html
 
-enum Tree {
-    Empty,
-    Leaf(i32),
-    Node(Box<Tree>, Box<Tree>)
+mod tree;
+
+enum Bool {
+    True,
+    False
+}
+
+enum Length {
+    Metres(i32),
+    Feet(i32)
+}
+
+enum Either<A, B> {
+    Left(A),
+    Right(B)
 }
 
 fn main() {
-    let one   = Tree::Leaf(1);
-    let two   = Tree::Leaf(2);
-    let three = Tree::Leaf(3);
-    //let n     = Tree::Node(Box::new(two), Box::new(three));
-    let n     = Tree::Node(box two, box three);
-    let t     = Tree::Node(box one, box n);
-
-    //dfs(t, 2);
+    let t = Bool::True;
+    let f = Bool::False;
+    let l: Either<i32, f32> = Either::Right(6.28);
+    let two   = tree::Tree::Leaf(2);
+    let three = tree::Tree::Leaf(3);
+    let n     = tree::Tree::Node(Box::new(two), Box::new(three));
 }
-/*
-fn dfs(Tree: t, i32: n) -> Tree {
-    match movement {
-        Direction::N(n) => new_pos();
-        Command::Download(web, path) => println!("Going to download {}", web),
-        Command::Run(path)           => println!("Going to run {}", path),
-        _                            => println!("Going to do .. something else")
-    }
-}
-*/
