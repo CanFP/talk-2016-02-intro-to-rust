@@ -1,25 +1,49 @@
 use std::env;
  
-/* first pass 
-fn main() {
-    let args: Vec<_> = env::args().collect();
-    let hello = "hello";
-    let buffer: [u8; 10] = ['\0' as u8; 10];
+// First pass
 
-    strcpy(buffer, args[1]);
+//fn main() {
+    //let args: Vec<_> = env::args().collect();
+    //let hello = "hello";
+    //let buffer: [u8; 10] = ['\0' as u8; 10];
 
-    println!("hello: {}", hello);
-    println!("buffer: {:?}", buffer);
-}
+    //strcpy(buffer, args[1]);
 
-fn strcpy(dst: [u8; 10], src: String) {
-    for (i, c) in src.bytes().enumerate() {
-        dst[i] = c;
-    };
-}
-*/
+    //println!("hello: {}", hello);
+    //println!("buffer: {:?}", buffer);
+//}
 
-/* Second pass
+//fn strcpy(dst: [u8; 10], src: String) {
+    //for (i, c) in src.bytes().enumerate() {
+        //dst[i] = c;
+    //};
+//}
+
+
+// Second pass
+// Make dst immutable
+
+//fn main() {
+    //let args: Vec<_> = env::args().collect();
+    //let hello = "hello";
+    //let buffer: [u8; 10] = ['\0' as u8; 10];
+
+    //strcpy(buffer, &args[1]);
+
+    //println!("hello: {}", hello);
+    //println!("buffer: {:?}", buffer);
+//}
+
+//fn strcpy(mut dst: [u8; 10], src: &String) {
+    //for (i, c) in src.bytes().enumerate() {
+        //dst[i] = c;
+    //};
+//}
+
+
+// Third pass
+// Make strcpy take a reference
+
 fn main() {
     let args: Vec<_> = env::args().collect();
     let hello = "hello";
@@ -31,26 +55,9 @@ fn main() {
     println!("buffer: {:?}", buffer);
 }
 
-fn strcpy(mut dst: [u8; 10], src: &String) {
+fn strcpy(&mut dst: [u8], src: &String) {
     for (i, c) in src.bytes().enumerate() {
-        dst[i] = c;
-    };
-}
-*/
-
-fn main() {
-    let args: Vec<_> = env::args().collect();
-    let hello = "hello";
-    let buffer: [u8; 10] = ['\0' as u8; 10];
-
-    strcpy(buffer, &args[1]);
-
-    println!("hello: {}", hello);
-    println!("buffer: {:?}", buffer);
-}
-
-fn strcpy(&mut dst: [u8; 10], src: &String) {
-    for (i, c) in src.bytes().enumerate() {
-        dst[i] = c;
+        println!("dst {}", dst[i]);
+        //dst[i] = c;
     };
 }
