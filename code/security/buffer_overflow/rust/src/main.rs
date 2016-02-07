@@ -18,8 +18,8 @@ fn main() {
 
     strcpy(buffer, &args[1]);
 
-    println!("hello: {}", hello);
-    println!("buffer: {:?}", buffer);
+    println!("hello:      {}", hello);
+    println!("buffer:     {:?}", buffer);
 }
 
 fn strcpy(mut dst: [u8; 10], src: &String) {
@@ -27,5 +27,5 @@ fn strcpy(mut dst: [u8; 10], src: &String) {
     for (i, c) in src.bytes().enumerate() {
         dst[i] = c;
     };
-    println!("dst after: {:?}", dst);
+    println!("dst after:  {:?}", dst);
 }
