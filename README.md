@@ -1,6 +1,7 @@
 # Intro to Rust
 
 This repo accompanies the talk given at CanFP in February 2016 on an Introduction to the Rust Programming Language.
+Slides for the talk are available at: https://goo.gl/j4uAFq
 
 Under code you will find various examples that where run during the talk.
 
